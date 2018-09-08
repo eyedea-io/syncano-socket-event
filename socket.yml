@@ -1,0 +1,148 @@
+name: postal-address
+description: Managing Address type of data
+
+classes:
+  Event:
+    - name: name
+      type: string
+    - name: description
+      type: string
+    - name: url
+      type: string
+    - name: duration
+      type: integer
+    - name: eventStatus
+      type: string
+    - name: startDate
+      type: datetime
+    - name: endDate
+      type: datetime
+    - name: inLanguage
+      type: string
+    - name: inLanguage
+      type: string
+    - name: maximumAttendeeCapacity
+      type: integer
+    - name: image
+      type: file
+
+endpoints:
+  add:
+    private: true
+    description: Add Event
+    inputs:
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: The name of the Event.
+        description:
+          type: string
+          description: A description of the Event.
+        url:
+          type: string
+          description: URL of the item.
+        duration:
+          type: string
+          description: The duration of the item (movie, audio recording, event, etc.) in ISO 8601 date format.
+        eventStatus:
+          type: string
+          description: An eventStatus of an event represents its status; particularly useful when an event is cancelled or rescheduled.
+        startDate:
+          type: string
+          format: date-time
+          description: The start date and time of the item (in ISO 8601 date format).
+        endDate:
+          type: string
+          format: date-time
+          description: The end date and time of the item (in ISO 8601 date format).
+        inLanguage:
+          type: string
+          description: The language of the content or performance or used in an action. Please use one of the language codes from the IETF BCP 47 standard.
+        maximumAttendeeCapacity:
+          type: integer
+          description: The total number of individuals that may attend an event or venue.
+        image:
+          type: string
+          description: An image of the Event.
+      success:
+        exit_code: 204
+        description: Address added succesfully
+      fail:
+        description: Fail
+        properties:
+          message:
+            description: Fail message
+            type: string
+
+  update:
+    private: true
+    description: Update Address
+    inputs:
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          description: ID of the Event.
+        name:
+          type: string
+          description: The name of the Event.
+        description:
+          type: string
+          description: A description of the Event.
+        url:
+          type: string
+          description: URL of the item.
+        duration:
+          type: string
+          description: The duration of the item (movie, audio recording, event, etc.) in ISO 8601 date format.
+        eventStatus:
+          type: string
+          description: An eventStatus of an event represents its status; particularly useful when an event is cancelled or rescheduled.
+        startDate:
+          type: string
+          format: date-time
+          description: The start date and time of the item (in ISO 8601 date format).
+        endDate:
+          type: string
+          format: date-time
+          description: The end date and time of the item (in ISO 8601 date format).
+        inLanguage:
+          type: string
+          description: The language of the content or performance or used in an action. Please use one of the language codes from the IETF BCP 47 standard.
+        maximumAttendeeCapacity:
+          type: integer
+          description: The total number of individuals that may attend an event or venue.
+        image:
+          type: string
+          description: An image of the Event.
+    outputs:
+      success:
+        exit_code: 204
+        description: Address updated succesfully
+      fail:
+        description: Fail
+        properties:
+          message:
+            description: Fail message
+            type: string
+
+  delete:
+    private: true
+    description: Add Address
+    inputs:
+      properties:
+        id:
+          description: Address object ID
+    outputs:
+      success:
+        exit_code: 204
+        description: Address deleted succesfully
+      fail:
+        description: Fail
+        properties:
+          message:
+            description: Fail message
+            type: string
